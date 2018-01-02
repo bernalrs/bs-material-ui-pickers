@@ -1,6 +1,6 @@
 {
   "name": "bs-material-ui-pickers",
-  "version": "0.0.6",
+  "version": "0.0.1",
   "description": "Reason bindings for react-notification-system",
   "main": "lib/js/src/ReactNotificationSystem.js",
   "keywords": [
@@ -31,21 +31,25 @@
   "author": "Remi Bernal <bernal.rs@gmail.com>",
   "contributors": ["Remi Bernal <bernal.rs@gmail.com>"],
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "bs-moment": "^0.1.8"
+  },
   "devDependencies": {
     "bs-platform": "2.1.0",
-    "material-ui": "1.0.0-beta.x",
     "husky": "0.14.3",
     "lint-staged": "6.0.0",
     "prettier": "1.9.2",
     "react-notification-system": "0.2.16",
     "reason-react": "0.3.0",
+    "material-ui": "^1.0.0-beta.25",
+    "bs-material-ui": "^0.1.16",
     "release-it": "^5.1.2"
   },
   "peerDependencies": {
     "react-notification-system": "0.2.16",
     "reason-react": "0.3.0",
-    "material-ui": "1.0.0-beta.x"
+    "material-ui": "^1.0.0-beta.25",
+    "bs-material-ui": "^0.1.16"
   },
   "lint-staged": {
     "*.{js,json}": ["prettier --write", "git add"],
