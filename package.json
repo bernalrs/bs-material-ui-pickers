@@ -1,0 +1,58 @@
+{
+  "name": "bs-material-ui-pickers",
+  "version": "0.0.1",
+  "description": "Reason bindings for react-notification-system",
+  "main": "lib/js/src/ReactNotificationSystem.js",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-notification-system",
+    "reason-react",
+    "bucklescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernalrs/bs-material-ui-pickers.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bernalrs/bs-material-ui-pickers/issues"
+  },
+  "homepage": "https://github.com/bernalrs/bs-material-ui-pickers/readme",
+  "scripts": {
+    "precommit": "lint-staged",
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "yarn run clean && yarn run build",
+    "format": "prettier --write ./*.{js,json} ./**/*.{js,json}",
+    "release-it": "release-it"
+  },
+  "author": "Remi Bernal <bernal.rs@gmail.com>",
+  "contributors": ["Remi Bernal <bernal.rs@gmail.com>"],
+  "license": "MIT",
+  "dependencies": {
+    "bs-moment": "^0.1.8"
+  },
+  "devDependencies": {
+    "bs-platform": "2.1.0",
+    "husky": "0.14.3",
+    "lint-staged": "6.0.0",
+    "prettier": "1.9.2",
+    "react-notification-system": "0.2.16",
+    "reason-react": "0.3.0",
+    "material-ui": "^1.0.0-beta.25",
+    "bs-material-ui": "^0.1.16",
+    "release-it": "^5.1.2"
+  },
+  "peerDependencies": {
+    "react-notification-system": "0.2.16",
+    "reason-react": "0.3.0",
+    "material-ui": "^1.0.0-beta.25",
+    "bs-material-ui": "^0.1.16"
+  },
+  "lint-staged": {
+    "*.{js,json}": ["prettier --write", "git add"],
+    "src/**/*.re": ["refmt --in-place", "git add"]
+  }
+}
