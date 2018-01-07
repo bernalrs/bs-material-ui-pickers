@@ -102,17 +102,35 @@ module DateTimePicker = {
         ~cancelLabel: option(string)=?,
         ~labelFunc: option(unit => string)=?,
         ~renderDay: option(unit => string)=?,
-        ~leftArrowIcon: option(ReasonReact.reactElement)=?,
-        ~rightArrowIcon: option(ReasonReact.reactElement)=?,
-        ~dateRangeIcon: option(ReasonReact.reactElement)=?,
-        ~timeIcon: option(ReasonReact.reactElement)=?,
+        ~leftArrowIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~rightArrowIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~dateRangeIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~timeIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
         ~ampm: option(bool)=?,
         ~shouldDisableDate: option(MomentRe.Moment.t => bool)=?,
         ~keyboard: option(bool)=?,
-        ~keyboardIcon: option(ReasonReact.reactElement)=?,
+        ~keyboardIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
         ~invalidDateMessage: option(string)=?,
         /* TODO: ~mask: option(a)=?, */
-        ~label: option(ReasonReact.reactElement)=?,
+        ~label:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
         ~style: option(ReactDOMRe.style)=?,
         ~className: option(string)=?,
         children
@@ -140,17 +158,18 @@ module DateTimePicker = {
             "cancelLabel": from_opt(cancelLabel),
             "labelFunc": from_opt(labelFunc),
             "renderDay": from_opt(renderDay),
-            "leftArrowIcon": from_opt(leftArrowIcon),
-            "rightArrowIcon": from_opt(rightArrowIcon),
-            "dateRangeIcon": from_opt(dateRangeIcon),
+            "leftArrowIcon": from_opt(option_map(unwrap_value, leftArrowIcon)),
+            "rightArrowIcon":
+              from_opt(option_map(unwrap_value, rightArrowIcon)),
+            "dateRangeIcon": from_opt(option_map(unwrap_value, dateRangeIcon)),
             "timeIcon": from_opt(timeIcon),
             "ampm": wrap_bool(ampm),
             "shouldDisableDate": from_opt(shouldDisableDate),
             "keyboard": wrap_bool(keyboard),
-            "keyboardIcon": from_opt(keyboardIcon),
+            "keyboardIcon": from_opt(option_map(unwrap_value, keyboardIcon)),
             "invalidDateMessage": from_opt(invalidDateMessage),
             /* TODO: ~mask: from_opt(a)=?,, */
-            "label": from_opt(label),
+            "label": from_opt(option_map(unwrap_value, label)),
             "style": from_opt(style),
             "className": from_opt(className)
           }
