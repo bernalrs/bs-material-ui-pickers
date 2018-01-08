@@ -1,6 +1,6 @@
 {
   "name": "bs-material-ui-pickers",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Reason bindings for bs-material-ui-pickers",
   "main": "/lib/js/src/MateriaUIPickers.js",
   "keywords": [
