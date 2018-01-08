@@ -24,9 +24,9 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "yarn run clean && yarn run build",
-    "format": "prettier --write ./*.{js,json} ./**/*.{js,json}",
-    "release-it": "release-it"
+    "prepare": "yarn run clean && yarn run build",
+    "release-it": "yarn run prepare && release-it",
+    "format": "prettier --write ./*.{js,json} ./**/*.{js,json}"
   },
   "author": "Remi Bernal <bernal.rs@gmail.com>",
   "contributors": ["Remi Bernal <bernal.rs@gmail.com>"],
