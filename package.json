@@ -1,6 +1,6 @@
 {
   "name": "bs-material-ui-pickers",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Reason bindings for bs-material-ui-pickers",
   "main": "/lib/js/src/MateriaUIPickers.js",
   "keywords": [
@@ -24,8 +24,8 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "yarn run clean && yarn run build",
-    "release-it": "yarn run prepare && release-it",
+    "prepare": "npm run clean && npm run build",
+    "release-it": "npm run prepare && release-it",
     "format": "prettier --write ./*.{js,json} ./**/*.{js,json}"
   },
   "author": "Remi Bernal <bernal.rs@gmail.com>",
