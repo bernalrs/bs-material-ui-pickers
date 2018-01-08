@@ -1,6 +1,6 @@
 {
   "name": "bs-material-ui-pickers",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Reason bindings for bs-material-ui-pickers",
   "main": "/lib/js/src/MateriaUIPickers.js",
   "keywords": [
@@ -14,6 +14,9 @@
     "type": "git",
     "url": "git+https://github.com/bernalrs/bs-material-ui-pickers.git"
   },
+  "publishConfig": {
+    "registry": "htps://registry.npmjs.org"
+  },
   "bugs": {
     "url": "https://github.com/bernalrs/bs-material-ui-pickers/issues"
   },
@@ -24,8 +27,8 @@
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "npm run clean && npm run build",
-    "release-it": "npm run prepare && release-it",
+    "prepare": "yarn run clean && yarn run build",
+    "release": "yarn run prepare && release-it",
     "format": "prettier --write ./*.{js,json} ./**/*.{js,json}"
   },
   "author": "Remi Bernal <bernal.rs@gmail.com>",
