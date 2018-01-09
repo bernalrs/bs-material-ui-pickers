@@ -2,7 +2,7 @@
   "name": "bs-react-notification-system",
   "bsc-flags": ["-bs-super-errors"],
   "sources": ["src"],
-  "bs-dependencies": ["reason-react", "bs-material-ui", "bs-moment"],
+  "bs-dependencies": ["reason-react", "bs-moment"],
   "reason": {
     "react-jsx": 2
   },

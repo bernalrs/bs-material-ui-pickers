@@ -43,13 +43,10 @@
     "lint-staged": "6.0.0",
     "prettier": "1.9.2",
     "reason-react": "0.3.0",
-    "bs-material-ui": "^0.1.16",
-    "material-ui": "^1.0.0-beta.25",
     "release-it": "^5.1.2"
   },
   "peerDependencies": {
     "material-ui": "^1.0.0-beta.25",
-    "bs-material-ui": "^0.1.16",
     "reason-react": "0.3.0",
     "material-ui-pickers": "^1.0.0-beta.12"
   },
