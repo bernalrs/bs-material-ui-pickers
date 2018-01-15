@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "bs-platform": "2.1.0",
+    "material-ui-pickers": "^1.0.0-beta.12",
     "husky": "0.14.3",
     "lint-staged": "6.0.0",
     "prettier": "1.9.2",

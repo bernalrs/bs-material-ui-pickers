@@ -126,7 +126,7 @@ module DateTimePicker = {
              [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
            )=?,
         ~invalidDateMessage: option(string)=?,
-        /* TODO: ~mask: option(a)=?, */
+        ~mask: option(Js.t({..}))=?,
         ~label:
            option(
              [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
@@ -168,7 +168,7 @@ module DateTimePicker = {
             "keyboard": wrap_bool(keyboard),
             "keyboardIcon": from_opt(option_map(unwrap_value, keyboardIcon)),
             "invalidDateMessage": from_opt(invalidDateMessage),
-            /* TODO: ~mask: from_opt(a)=?,, */
+            "mask": from_opt(mask),
             "label": from_opt(option_map(unwrap_value, label)),
             "style": from_opt(style),
             "className": from_opt(className)
