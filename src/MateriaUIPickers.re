@@ -42,6 +42,59 @@ let option_map = (fn, option) =>
   | None => None
   };
 
+module TimePicker = {
+  [@bs.module "material-ui-pickers"]
+  external reactClass : ReasonReact.reactClass = "TimePicker";
+  let make =
+      (
+        ~format: option(string)=?,
+        ~autoOk: option(bool)=?,
+        ~onChange: option((MomentRe.Moment.t, bool) => unit),
+        ~returnMoment: option(bool)=?,
+        ~invalidLabel: option(string)=?,
+        ~emptyLabel: option(string)=?,
+        ~okLabel: option(string)=?,
+        ~cancelLabel: option(string)=?,
+        ~clearLabel: option(string)=?,
+        ~labelFunc: option(unit => string)=?,
+        ~ampm: option(bool)=?,
+        ~keyboard: option(bool)=?,
+        ~keyboardIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~mask: option(Js.t({..}))=?,
+        ~style: option(ReactDOMRe.style)=?,
+        ~className: option(string)=?,
+        children
+      ) =>
+    ReasonReact.wrapJsForReason(
+      ~reactClass,
+      ~props=
+        Js.Nullable.(
+          {
+            "format": from_opt(format),
+            "autoOk": wrap_bool(autoOk),
+            "onChange": from_opt(onChange),
+            "returnMoment": wrap_bool(returnMoment),
+            "invalidLabel": from_opt(invalidLabel),
+            "emptyLabel": from_opt(emptyLabel),
+            "okLabel": from_opt(okLabel),
+            "cancelLabel": from_opt(cancelLabel),
+            "clearLabel": from_opt(clearLabel),
+            "labelFunc": from_opt(labelFunc),
+            "ampm": wrap_bool(ampm),
+            "keyboard": wrap_bool(keyboard),
+            "keyboardIcon": from_opt(option_map(unwrap_value, keyboardIcon)),
+            "mask": from_opt(mask),
+            "style": from_opt(style),
+            "className": from_opt(className)
+          }
+        ),
+      children
+    );
+};
+
 module DateTimePicker = {
   [@bs.module "material-ui-pickers"]
   external reactClass : ReasonReact.reactClass = "DateTimePicker";
