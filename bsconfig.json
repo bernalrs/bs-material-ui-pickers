@@ -1,5 +1,5 @@
 {
-  "name": "bs-react-notification-system",
+  "name": "bs-material-ui-pickers",
   "bsc-flags": ["-bs-super-errors"],
   "sources": ["src"],
   "bs-dependencies": ["reason-react", "bs-moment"],
