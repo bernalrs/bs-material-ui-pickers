@@ -2,7 +2,7 @@
   "name": "bs-material-ui-pickers",
   "version": "0.0.12",
   "description": "Reason bindings for bs-material-ui-pickers",
-  "main": "/lib/js/src/MateriaUIPickers.js",
+  "main": "/lib/js/src/MaterialUIPickers.js",
   "keywords": [
     "react",
     "react-component",
