@@ -36,7 +36,7 @@ TODO: Add Example.
 ## Bindings
 
 - [x] DateTimePicker 
-- [ ] TimePicker 
+- [x] TimePicker 
 - [ ] DatePicker
 
 
