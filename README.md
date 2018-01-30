@@ -37,6 +37,6 @@ TODO: Add Example.
 
 - [x] DateTimePicker 
 - [x] TimePicker 
-- [ ] DatePicker
+- [x] DatePicker
 
 

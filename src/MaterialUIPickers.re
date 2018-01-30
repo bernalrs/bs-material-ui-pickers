@@ -42,6 +42,20 @@ let option_map = (fn, option) =>
   | None => None
   };
 
+module TimeUnit = {
+  type t =
+    | Year
+    | Date
+    | Hour
+    | Minutes;
+  let to_string =
+    fun
+    | Year => "year"
+    | Date => "date"
+    | Hour => "hour"
+    | Minutes => "minutes";
+};
+
 module TimePicker = {
   [@bs.module "material-ui-pickers"]
   external reactClass : ReasonReact.reactClass = "TimePicker";
@@ -98,19 +112,6 @@ module TimePicker = {
 module DateTimePicker = {
   [@bs.module "material-ui-pickers"]
   external reactClass : ReasonReact.reactClass = "DateTimePicker";
-  module TimeUnit = {
-    type t =
-      | Year
-      | Date
-      | Hour
-      | Minutes;
-    let to_string =
-      fun
-      | Year => "year"
-      | Date => "date"
-      | Hour => "hour"
-      | Minutes => "minutes";
-  };
   let make =
       (
         ~value:
@@ -225,6 +226,96 @@ module DateTimePicker = {
             "label": from_opt(option_map(unwrap_value, label)),
             "style": from_opt(style),
             "className": from_opt(className)
+          }
+        ),
+      children
+    );
+};
+
+module DatePicker = {
+  [@bs.module "material-ui-pickers"]
+  external reactClass : ReasonReact.reactClass = "DatePicker";
+  let make =
+      (
+        ~value:
+           option(
+             [
+               | `Date(Js.Date.t)
+               | `Moment(MomentRe.Moment.t)
+               | `String(string)
+               | `Object(Js.t({..}))
+             ]
+           )=?,
+        ~format: option(string)=?,
+        ~label: option(string)=?,
+        ~minDate:
+           option(
+             [
+               | `Date(Js.Date.t)
+               | `Moment(MomentRe.Moment.t)
+               | `String(string)
+               | `Object(Js.t({..}))
+             ]
+           )=?,
+        ~maxDate:
+           option(
+             [
+               | `Date(Js.Date.t)
+               | `Moment(MomentRe.Moment.t)
+               | `String(string)
+               | `Object(Js.t({..}))
+             ]
+           )=?,
+        ~onChange: option(MomentRe.Moment.t => unit)=?,
+        ~leftArrowIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~rightArrowIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~dateRangeIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~timeIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~keyboardIcon:
+           option(
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+           )=?,
+        ~okLabel: option(string)=?,
+        ~cancelLabel: option(string)=?,
+        ~clearLabel: option(string)=?,
+        ~openToYearSelection: option(bool)=?,
+        ~clearable: option(bool)=?,
+        children
+      ) =>
+    ReasonReact.wrapJsForReason(
+      ~reactClass,
+      ~props=
+        Js.Nullable.(
+          {
+            "value": from_opt(option_map(unwrap_value, value)),
+            "format": from_opt(format),
+            "label": from_opt(label),
+            "minDate": from_opt(option_map(unwrap_value, minDate)),
+            "maxDate": from_opt(option_map(unwrap_value, maxDate)),
+            "onChange": from_opt(onChange),
+            "keyboardIcon": from_opt(option_map(unwrap_value, keyboardIcon)),
+            "timeIcon": from_opt(option_map(unwrap_value, timeIcon)),
+            "dateRangeIcon": from_opt(option_map(unwrap_value, dateRangeIcon)),
+            "rightArrowIcon":
+              from_opt(option_map(unwrap_value, rightArrowIcon)),
+            "leftArrowIcon": from_opt(option_map(unwrap_value, leftArrowIcon)),
+            "okLabel": from_opt(okLabel),
+            "cancelLabel": from_opt(cancelLabel),
+            "openToYearSelection": from_opt(openToYearSelection),
+            "clearable": from_opt(clearable),
+            "clearLabel": from_opt(clearLabel)
           }
         ),
       children
