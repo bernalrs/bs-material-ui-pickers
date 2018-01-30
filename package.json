@@ -1,6 +1,6 @@
 {
   "name": "bs-material-ui-pickers",
-  "version": "0.2.0",
+  "version": "1.0.1",
   "description": "Reason bindings for bs-material-ui-pickers",
   "main": "lib/js/src/MaterialUIPickers.js",
   "keywords": [
@@ -36,14 +36,14 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "reason-react": "^0.3.0",
-    "release-it": "^6.1.1",
     "bs-moment": "^0.2.1",
     "bs-platform": "2.1.0",
     "husky": "0.14.3",
     "lint-staged": "6.0.0",
     "moment": "^2.19.2",
-    "prettier": "1.9.2"
+    "prettier": "1.9.2",
+    "reason-react": "^0.3.0",
+    "release-it": "^6.1.1"
   },
   "peerDependencies": {
     "bs-moment": "^0.2.1",
