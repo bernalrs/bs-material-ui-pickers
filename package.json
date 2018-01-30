@@ -1,6 +1,6 @@
 {
   "name": "bs-material-ui-pickers",
-  "version": "0.0.17",
+  "version": "0.1.0",
   "description": "Reason bindings for bs-material-ui-pickers",
   "main": "lib/js/src/MaterialUIPickers.js",
   "keywords": [
@@ -39,17 +39,17 @@
   },
   "devDependencies": {
     "bs-platform": "2.1.0",
-    "material-ui-pickers": "^1.0.0-beta.12",
     "husky": "0.14.3",
     "lint-staged": "6.0.0",
+    "material-ui-pickers": "^1.0.0-beta.12",
     "prettier": "1.9.2",
     "reason-react": "0.3.0",
     "release-it": "^5.1.2"
   },
   "peerDependencies": {
     "material-ui": "^1.0.0-beta.26",
-    "reason-react": "^0.3.0",
-    "material-ui-pickers": "^1.0.0-beta.12"
+    "material-ui-pickers": "^1.0.0-beta.12",
+    "reason-react": "^0.3.0"
   },
   "lint-staged": {
     "*.{js,json}": ["prettier --write", "git add"],
