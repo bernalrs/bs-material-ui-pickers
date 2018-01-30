@@ -34,22 +34,27 @@
   "author": "Remi Bernal <bernal.rs@gmail.com>",
   "contributors": ["Remi Bernal <bernal.rs@gmail.com>"],
   "license": "MIT",
-  "dependencies": {
-    "bs-moment": "^0.1.8"
-  },
+  "dependencies": {},
   "devDependencies": {
     "bs-platform": "2.1.0",
+    "reason-react": "^0.3.0",
+    "moment": "^2.19.2",
+    "bs-moment": "^0.2.1",
     "husky": "0.14.3",
     "lint-staged": "6.0.0",
-    "material-ui-pickers": "^1.0.0-beta.12",
-    "prettier": "1.9.2",
-    "reason-react": "0.3.0",
-    "release-it": "^5.1.2"
+    "prettier": "1.9.2"
   },
   "peerDependencies": {
-    "material-ui": "^1.0.0-beta.26",
-    "material-ui-pickers": "^1.0.0-beta.12",
-    "reason-react": "^0.3.0"
+    "moment": "^2.19.2",
+    "bs-moment": "^0.2.1",
+    "classnames": "^2.2.5",
+    "material-ui": "^1.0.0-beta.30",
+    "material-ui-pickers": "^1.0.0-beta.13.1",
+    "moment-range": "^3.1.0",
+    "prop-types": "^15.6.0",
+    "react": "react@^0.14.0 || ^15.0.0 || ^16.0.0",
+    "react-dom": "^0.14.x || ^15.0.0 || ^16.0.0",
+    "react-text-mask": "^5.1.0"
   },
   "lint-staged": {
     "*.{js,json}": ["prettier --write", "git add"],
