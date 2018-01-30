@@ -6,8 +6,6 @@
 
 ## Status
 
-🚧 This is a WIP, not everything is supported yet. 🚧
-
 Feel free to create an issue or PR if you find anything missing.
 
 Please ensure that [material-ui v1](https://github.com/mui-org/material-ui/) and [bs-material-ui](https://github.com/InsidersByte/bs-material-ui/) are also instaleld, please read respective [README.md](https://github.com/InsidersByte/bs-material-ui/blob/master/README.md)
