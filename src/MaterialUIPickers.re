@@ -3,7 +3,7 @@ type jsUnsafe;
 external toJsUnsafe : 'a => jsUnsafe = "%identity";
 
 let wrap_bool = (b: option(bool)) =>
-  switch b {
+  switch (b) {
   | Some(value) => Js.Nullable.return(Js.Boolean.to_js_boolean(value))
   | None => Js.Nullable.undefined
   };
@@ -21,9 +21,9 @@ let unwrap_value =
         | `Date(Js.Date.t)
         | `ReactElement(ReasonReact.reactElement)
         | `Object(Js.t({..}))
-      ]
+      ],
     ) =>
-  switch r {
+  switch (r) {
   | `String(s) => toJsUnsafe(s)
   | `Int(i) => toJsUnsafe(i)
   | `StringArray(a) => toJsUnsafe(a)
@@ -37,7 +37,7 @@ let unwrap_value =
   };
 
 let option_map = (fn, option) =>
-  switch option {
+  switch (option) {
   | Some(value) => Some(fn(value))
   | None => None
   };
@@ -75,37 +75,38 @@ module TimePicker = {
         ~keyboard: option(bool)=?,
         ~keyboardIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~mask: option(Js.t({..}))=?,
         ~style: option(ReactDOMRe.style)=?,
         ~className: option(string)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
         Js.Nullable.(
           {
-            "format": from_opt(format),
+            "format": fromOption(format),
             "autoOk": wrap_bool(autoOk),
-            "onChange": from_opt(onChange),
+            "onChange": fromOption(onChange),
             "returnMoment": wrap_bool(returnMoment),
-            "invalidLabel": from_opt(invalidLabel),
-            "emptyLabel": from_opt(emptyLabel),
-            "okLabel": from_opt(okLabel),
-            "cancelLabel": from_opt(cancelLabel),
-            "clearLabel": from_opt(clearLabel),
-            "labelFunc": from_opt(labelFunc),
+            "invalidLabel": fromOption(invalidLabel),
+            "emptyLabel": fromOption(emptyLabel),
+            "okLabel": fromOption(okLabel),
+            "cancelLabel": fromOption(cancelLabel),
+            "clearLabel": fromOption(clearLabel),
+            "labelFunc": fromOption(labelFunc),
             "ampm": wrap_bool(ampm),
             "keyboard": wrap_bool(keyboard),
-            "keyboardIcon": from_opt(option_map(unwrap_value, keyboardIcon)),
-            "mask": from_opt(mask),
-            "style": from_opt(style),
-            "className": from_opt(className)
+            "keyboardIcon":
+              fromOption(option_map(unwrap_value, keyboardIcon)),
+            "mask": fromOption(mask),
+            "style": fromOption(style),
+            "className": fromOption(className),
           }
         ),
-      children
+      children,
     );
 };
 
@@ -121,7 +122,7 @@ module DateTimePicker = {
                | `Moment(MomentRe.Moment.t)
                | `String(string)
                | `Object(Js.t({..}))
-             ]
+             ],
            )=?,
         ~format: option(string)=?,
         ~autoOk: option(bool)=?,
@@ -138,7 +139,7 @@ module DateTimePicker = {
                | `Moment(MomentRe.Moment.t)
                | `String(string)
                | `Object(Js.t({..}))
-             ]
+             ],
            )=?,
         ~maxDate:
            option(
@@ -147,7 +148,7 @@ module DateTimePicker = {
                | `Moment(MomentRe.Moment.t)
                | `String(string)
                | `Object(Js.t({..}))
-             ]
+             ],
            )=?,
         ~onChange: option(MomentRe.Moment.t => unit)=?,
         ~returnMoment: option(bool)=?,
@@ -158,77 +159,80 @@ module DateTimePicker = {
         ~renderDay: option(unit => string)=?,
         ~leftArrowIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~rightArrowIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~dateRangeIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~timeIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~ampm: option(bool)=?,
         ~shouldDisableDate: option(MomentRe.Moment.t => bool)=?,
         ~keyboard: option(bool)=?,
         ~keyboardIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~invalidDateMessage: option(string)=?,
         ~mask: option(Js.t({..}))=?,
         ~label:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~style: option(ReactDOMRe.style)=?,
         ~className: option(string)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
         Js.Nullable.(
           {
-            "value": from_opt(option_map(unwrap_value, value)),
-            "format": from_opt(format),
+            "value": fromOption(option_map(unwrap_value, value)),
+            "format": fromOption(format),
             "autoOk": wrap_bool(autoOk),
             "autoSubmit": wrap_bool(autoSubmit),
             "disablePast": wrap_bool(disablePast),
             "disableFuture": wrap_bool(disableFuture),
             "showTabs": wrap_bool(showTabs),
-            "openTo": from_opt(option_map(TimeUnit.to_string, openTo)),
+            "openTo": fromOption(option_map(TimeUnit.to_string, openTo)),
             "animateYearScrolling": wrap_bool(animateYearScrolling),
-            "minDate": from_opt(option_map(unwrap_value, minDate)),
-            "maxDate": from_opt(option_map(unwrap_value, maxDate)),
-            "onChange": from_opt(onChange),
+            "minDate": fromOption(option_map(unwrap_value, minDate)),
+            "maxDate": fromOption(option_map(unwrap_value, maxDate)),
+            "onChange": fromOption(onChange),
             "returnMoment": wrap_bool(returnMoment),
-            "invalidLabel": from_opt(invalidLabel),
-            "okLabel": from_opt(okLabel),
-            "cancelLabel": from_opt(cancelLabel),
-            "labelFunc": from_opt(labelFunc),
-            "renderDay": from_opt(renderDay),
-            "leftArrowIcon": from_opt(option_map(unwrap_value, leftArrowIcon)),
+            "invalidLabel": fromOption(invalidLabel),
+            "okLabel": fromOption(okLabel),
+            "cancelLabel": fromOption(cancelLabel),
+            "labelFunc": fromOption(labelFunc),
+            "renderDay": fromOption(renderDay),
+            "leftArrowIcon":
+              fromOption(option_map(unwrap_value, leftArrowIcon)),
             "rightArrowIcon":
-              from_opt(option_map(unwrap_value, rightArrowIcon)),
-            "dateRangeIcon": from_opt(option_map(unwrap_value, dateRangeIcon)),
-            "timeIcon": from_opt(timeIcon),
+              fromOption(option_map(unwrap_value, rightArrowIcon)),
+            "dateRangeIcon":
+              fromOption(option_map(unwrap_value, dateRangeIcon)),
+            "timeIcon": fromOption(timeIcon),
             "ampm": wrap_bool(ampm),
-            "shouldDisableDate": from_opt(shouldDisableDate),
+            "shouldDisableDate": fromOption(shouldDisableDate),
             "keyboard": wrap_bool(keyboard),
-            "keyboardIcon": from_opt(option_map(unwrap_value, keyboardIcon)),
-            "invalidDateMessage": from_opt(invalidDateMessage),
-            "mask": from_opt(mask),
-            "label": from_opt(option_map(unwrap_value, label)),
-            "style": from_opt(style),
-            "className": from_opt(className)
+            "keyboardIcon":
+              fromOption(option_map(unwrap_value, keyboardIcon)),
+            "invalidDateMessage": fromOption(invalidDateMessage),
+            "mask": fromOption(mask),
+            "label": fromOption(option_map(unwrap_value, label)),
+            "style": fromOption(style),
+            "className": fromOption(className),
           }
         ),
-      children
+      children,
     );
 };
 
@@ -244,7 +248,7 @@ module DatePicker = {
                | `Moment(MomentRe.Moment.t)
                | `String(string)
                | `Object(Js.t({..}))
-             ]
+             ],
            )=?,
         ~format: option(string)=?,
         ~label: option(string)=?,
@@ -255,7 +259,7 @@ module DatePicker = {
                | `Moment(MomentRe.Moment.t)
                | `String(string)
                | `Object(Js.t({..}))
-             ]
+             ],
            )=?,
         ~maxDate:
            option(
@@ -264,60 +268,63 @@ module DatePicker = {
                | `Moment(MomentRe.Moment.t)
                | `String(string)
                | `Object(Js.t({..}))
-             ]
+             ],
            )=?,
         ~onChange: option(MomentRe.Moment.t => unit)=?,
         ~leftArrowIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~rightArrowIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~dateRangeIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~timeIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~keyboardIcon:
            option(
-             [ | `ReactElement(ReasonReact.reactElement) | `String(string)]
+             [ | `ReactElement(ReasonReact.reactElement) | `String(string)],
            )=?,
         ~okLabel: option(string)=?,
         ~cancelLabel: option(string)=?,
         ~clearLabel: option(string)=?,
         ~openToYearSelection: option(bool)=?,
         ~clearable: option(bool)=?,
-        children
+        children,
       ) =>
     ReasonReact.wrapJsForReason(
       ~reactClass,
       ~props=
         Js.Nullable.(
           {
-            "value": from_opt(option_map(unwrap_value, value)),
-            "format": from_opt(format),
-            "label": from_opt(label),
-            "minDate": from_opt(option_map(unwrap_value, minDate)),
-            "maxDate": from_opt(option_map(unwrap_value, maxDate)),
-            "onChange": from_opt(onChange),
-            "keyboardIcon": from_opt(option_map(unwrap_value, keyboardIcon)),
-            "timeIcon": from_opt(option_map(unwrap_value, timeIcon)),
-            "dateRangeIcon": from_opt(option_map(unwrap_value, dateRangeIcon)),
+            "value": fromOption(option_map(unwrap_value, value)),
+            "format": fromOption(format),
+            "label": fromOption(label),
+            "minDate": fromOption(option_map(unwrap_value, minDate)),
+            "maxDate": fromOption(option_map(unwrap_value, maxDate)),
+            "onChange": fromOption(onChange),
+            "keyboardIcon":
+              fromOption(option_map(unwrap_value, keyboardIcon)),
+            "timeIcon": fromOption(option_map(unwrap_value, timeIcon)),
+            "dateRangeIcon":
+              fromOption(option_map(unwrap_value, dateRangeIcon)),
             "rightArrowIcon":
-              from_opt(option_map(unwrap_value, rightArrowIcon)),
-            "leftArrowIcon": from_opt(option_map(unwrap_value, leftArrowIcon)),
-            "okLabel": from_opt(okLabel),
-            "cancelLabel": from_opt(cancelLabel),
-            "openToYearSelection": from_opt(openToYearSelection),
-            "clearable": from_opt(clearable),
-            "clearLabel": from_opt(clearLabel)
+              fromOption(option_map(unwrap_value, rightArrowIcon)),
+            "leftArrowIcon":
+              fromOption(option_map(unwrap_value, leftArrowIcon)),
+            "okLabel": fromOption(okLabel),
+            "cancelLabel": fromOption(cancelLabel),
+            "openToYearSelection": fromOption(openToYearSelection),
+            "clearable": fromOption(clearable),
+            "clearLabel": fromOption(clearLabel),
           }
         ),
-      children
+      children,
     );
 };
